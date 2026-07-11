@@ -55,13 +55,6 @@ Designing, backtesting, and deploying trading systems for retail and institution
   </tr>
 </table>
 
-## GitHub stats
-
-<div align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=GeneralTradingSarl&show_icons=true&theme=dark&hide_border=true&count_private=true" height="165"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GeneralTradingSarl&layout=compact&theme=dark&hide_border=true" height="165"/>
-</div>
-
 ## Work with me
 
 Available for freelance algorithmic trading and quant development. Reach out through Upwork or email above.
