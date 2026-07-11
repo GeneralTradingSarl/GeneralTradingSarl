@@ -19,7 +19,7 @@
 
 ## About
 
-Multi-disciplinary engineer and freelance builder with 10+ years of experience shipping production software across **automation, artificial intelligence, data, energy, and quantitative/algorithmic trading**. I design and deploy systems end to end: from low-level MQL4/MQL5 trading robots and institutional-grade C++ pricing engines, to Python and TypeScript automation pipelines, AI agents, and data platforms.
+Multi-disciplinary engineer and freelance builder with 10+ years of experience shipping production software across **automation, artificial intelligence, data, energy, and quantitative/algorithmic trading**. I design and deploy systems end to end: from low-level MQL4/MQL5 trading robots and institutional-grade C++ pricing engines, to Python and TypeScript automation pipelines, AI agent integrations, and data platforms.
 
 <div align="center">
 
@@ -34,7 +34,7 @@ Workflow and process automation, GUI/API automation, multi-agent orchestration, 
 <td width="50%" valign="top">
 
 ### AI &amp; Intelligent Agents
-LLM integration, autonomous and multi-agent systems, AI-powered search and research tools, computer-use agents, applied machine learning, natural language automation.
+LLM integration, computer-use and multi-agent systems, AI-powered search and research tools, applied machine learning, natural language automation.
 
 </td>
 </tr>
@@ -76,7 +76,7 @@ Expert Advisors and custom indicators for MetaTrader 4/5 (MQL4/MQL5) &middot; Sm
     </td>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/GeneralTradingSarl/computer_Agent">computer_Agent</a></h3>
-      Open-source, modular AI automation framework: LLM-powered agents, GUI and API automation, trading bots, multi-agent orchestration.
+      Automation and trading experiments built on the open-source Agent S computer-use framework, with MetaTrader and knowledge-engine integrations.
     </td>
   </tr>
   <tr>
@@ -85,18 +85,18 @@ Expert Advisors and custom indicators for MetaTrader 4/5 (MQL4/MQL5) &middot; Sm
       Smart Money Concepts indicator for MetaTrader 5. Order blocks, liquidity zones, market structure, fair value gaps.
     </td>
     <td width="50%" valign="top">
-      <h3><a href="https://github.com/GeneralTradingSarl/Perplexity_agent">Perplexity_agent</a></h3>
-      Local, self-hosted AI search engine inspired by Perplexity, built with TypeScript and Docker.
+      <h3><a href="https://github.com/GeneralTradingSarl/Website-portfolio">Website-portfolio</a></h3>
+      Static site to visualize trading account performance: account overview, trade history, and Chart.js analytics dashboards.
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/GeneralTradingSarl/mql4_experts">mql4_experts</a></h3>
-      1,129+ open source MQL4 Expert Advisors for MetaTrader 4: algorithmic forex trading robots with full source code.
+      1,129+ open source MQL4 Expert Advisors for MetaTrader 4.
     </td>
     <td width="50%" valign="top">
       <h3><a href="https://github.com/GeneralTradingSarl/expert-mt5">expert-mt5</a></h3>
-      Curated, optimized MetaTrader 5 Expert Advisors with screenshots and documentation.
+      Curated, optimized MetaTrader 5 Expert Advisors with documentation.
     </td>
   </tr>
 </table>
