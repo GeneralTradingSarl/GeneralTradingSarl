@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C6FF,100:0072FF&height=260&section=header&text=LADJOHOUNLOU%20Ismael&fontSize=46&fontColor=ffffff&fontAlignY=32&desc=Automation%20%C2%B7%20AI%20%C2%B7%20Energy%20%C2%B7%20Data%20%C2%B7%20Algorithmic%20Trading&descSize=18&descAlignY=48" width="100%"/>
+[![QuantSphere Terminal — live implied volatility surface, Kalman filtering, Markowitz frontier](assets/hero.gif)](https://github.com/GeneralTradingSarl/quantsphere-terminal)
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=0072FF&center=true&vCenter=true&width=700&lines=Building+automation+pipelines...;Training+and+deploying+AI+agents...;Engineering+data+%26+energy+systems...;Architecting+algorithmic+trading+systems..." alt="Typing SVG" />
+<sub>Real frames from <a href="https://github.com/GeneralTradingSarl/quantsphere-terminal">QuantSphere Terminal</a>. Every figure shown is read off the running app.</sub>
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ismael-portfolio-b27lpfreq-ismael-ladjohounlou-s-projects.vercel.app/en)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ismael-portfolio-liard.vercel.app/en)
 [![Upwork](https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~01498331f7c7800fc0)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:general.trading.bot.2025@gmail.com)
 
