@@ -4,10 +4,6 @@
 
 <sub>Real frames from <a href="https://github.com/GeneralTradingSarl/quantsphere-terminal">QuantSphere Terminal</a>. Every figure shown is read off the running app.</sub>
 
-https://github.com/GeneralTradingSarl/GeneralTradingSarl/raw/main/assets/hero-voice.mp4
-
-<video src="https://github.com/GeneralTradingSarl/GeneralTradingSarl/raw/main/assets/hero-voice.mp4" controls width="640"></video>
-
 [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ismael-portfolio-liard.vercel.app/en)
 [![Upwork](https://img.shields.io/badge/Upwork-6FDA44?style=for-the-badge&logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~01498331f7c7800fc0)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:general.trading.bot.2025@gmail.com)
