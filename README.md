@@ -101,12 +101,6 @@ Expert Advisors and custom indicators for MetaTrader 4/5 (MQL4/MQL5) &middot; Sm
   </tr>
 </table>
 
-## GitHub Activity
-
-<div align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com?user=GeneralTradingSarl&theme=dark&hide_border=true&background=0D1117&ring=0072FF&fire=00C6FF&currStreakLabel=0072FF" alt="GitHub Streak Stats" />
-</div>
-
 ## Work With Me
 
 Available for freelance work in automation, AI, data engineering, and algorithmic trading development. Reach out through Upwork or email above.
