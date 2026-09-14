@@ -26,7 +26,7 @@ money.
 
 ## Flagship work
 
-Three systems built end to end, each readable in full. The test counts are what the suites
+Five systems built end to end, each readable in full. The test counts are what the suites
 actually run, and CI runs them on every push.
 
 <table>
@@ -41,13 +41,45 @@ A constant product **decentralised exchange**: Solidity pair, router and sliding
 oracle with flash swaps and EIP-2612 permit; an event indexer that survives chain
 reorganisations; a Next.js and wagmi interface.
 
-**43 tests**, including reentrancy attempted from inside a flash-swap callback, a flash swap
-repaid 99.9% of what is owed, and randomised invariant runs asserting that k never decreases
-and no liquidity provider is ever diluted.
+**43 tests**, including reentrancy attempted from inside a flash-swap callback and randomised
+invariant runs asserting that k never decreases.
 
 `Solidity` `Hardhat` `viem` `Next.js` `wagmi`
 
 </td>
+<td width="33%" valign="top">
+
+### [Sluice](https://github.com/GeneralTradingSarl/sluice)
+
+[![CI](https://github.com/GeneralTradingSarl/sluice/actions/workflows/ci.yml/badge.svg)](https://github.com/GeneralTradingSarl/sluice/actions/workflows/ci.yml)
+
+A **streaming data pipeline** written from the log up: segmented append-only files with
+CRC-checked records and crash recovery, credit-based backpressure, idempotent producers, and
+exactly-once materialisation into a time-series store.
+
+**35 tests** over the failure modes, and a benchmark that publishes the durability trade-off
+in numbers rather than adjectives.
+
+`TypeScript` `Node 22` `SQLite`
+
+</td>
+<td width="33%" valign="top">
+
+### [quant-mcp](https://github.com/GeneralTradingSarl/quant-mcp)
+
+[![CI](https://github.com/GeneralTradingSarl/quant-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/GeneralTradingSarl/quant-mcp/actions/workflows/ci.yml)
+
+A **Model Context Protocol server** giving an agent typed market data, indicators,
+backtesting and position sizing. Bounded responses, errors a model can recover from, and
+execution assumptions returned with every backtest.
+
+**24 tests**, including a real MCP client driving a real handshake. Read-only by design.
+
+`MCP` `TypeScript` `Zod`
+
+</td>
+</tr>
+<tr>
 <td width="33%" valign="top">
 
 ### [Cascade](https://github.com/GeneralTradingSarl/Cascade)
@@ -55,13 +87,12 @@ and no liquidity provider is ever diluted.
 [![CI](https://github.com/GeneralTradingSarl/Cascade/actions/workflows/ci.yml/badge.svg)](https://github.com/GeneralTradingSarl/Cascade/actions/workflows/ci.yml)
 
 An **Instagram to WhatsApp pipeline** on the official APIs: idempotent publishing with media
-container polling, webhook lead capture and explainable scoring, and outreach gated by
-consent and the WhatsApp 24 hour service window.
+container polling, webhook lead capture and scoring, outreach gated by consent and the
+WhatsApp 24 hour service window.
 
-**64 tests**, none of which need credentials or a network. Three importable n8n workflows and
-a read-only operations console.
+**64 tests**, none of which need credentials. Three importable n8n workflows.
 
-`TypeScript` `Node 22` `Graph API` `WhatsApp Cloud API` `n8n`
+`TypeScript` `Graph API` `WhatsApp Cloud API` `n8n`
 
 </td>
 <td width="33%" valign="top">
@@ -70,12 +101,26 @@ a read-only operations console.
 
 An **institutional quantitative terminal**: C++20 numerical core with an API-identical NumPy
 fallback, options pricing (Black-Scholes, Heston, Merton, Monte Carlo, Crank-Nicolson PDE
-with PSOR for early exercise), Kalman filtering, GARCH forecasting, walk-forward optimisation.
+with PSOR), Kalman filtering, GARCH forecasting, walk-forward optimisation.
 
 **88 verification checks**: closed-form parity, Monte Carlo within standard error, native and
-fallback agreeing to 1e-14, mechanical look-ahead guards.
+fallback agreeing to 1e-14.
 
 `C++20` `pybind11` `Python` `Streamlit`
+
+</td>
+<td width="33%" valign="top">
+
+### What they have in common
+
+External systems that fail, retries that must not duplicate, and state that has to survive a
+crash. Different domains, one discipline.
+
+Every one of them runs from a clean clone with `npm install` or `pip install -r`, and every
+test suite finishes in seconds without a container, a cloud account or an API key.
+
+That is deliberate: a reviewer who has to provision infrastructure to see your work does not
+see your work.
 
 </td>
 </tr>
@@ -95,6 +140,10 @@ one a thing that breaks in production long before it breaks in a demo:
 | Spot price is manipulable inside a single block | [QuantSwap oracle](https://github.com/GeneralTradingSarl/QuantSwap/blob/main/contracts/oracle/QuantSwapOracle.sol) | Sliding-window TWAP. One test has a whale collapse spot by more than half while the oracle moves under 0.5%; the next shows it does converge once the skew is actually held, because a TWAP is a cost and not immunity |
 | Messaging somebody who never opted in | [Cascade consent gate](https://github.com/GeneralTradingSarl/Cascade/blob/main/src/whatsapp/outreach.ts) | One function that every send passes: consent, service window, opt-out list, audit entry. A new workflow cannot route around it |
 | Meta answers HTTP 200 with an error body | [Graph client](https://github.com/GeneralTradingSarl/Cascade/blob/main/src/core/graph.ts) | Retries classified by error code: back off on 4 / 80007 / 429, never retry 190 or 100, because retrying a dead token only delays the fix |
+| The consumer is slower than the producer | [Sluice broker](https://github.com/GeneralTradingSarl/sluice/blob/main/src/broker/broker.ts) | Writes are refused with a retry hint once the slowest group falls behind. Buffering without bound turns a slow consumer into an out-of-memory kill that loses what was buffered |
+| The same records are delivered twice | [Sluice sink](https://github.com/GeneralTradingSarl/sluice/blob/main/src/sink/timeseries.ts) | Rows, incremental rollups and the consumer offset move in one transaction, so a full replay applies nothing and every aggregate is unchanged |
+| A tool answers with five thousand rows | [quant-mcp guards](https://github.com/GeneralTradingSarl/quant-mcp/blob/main/src/guards.ts) | Responses are truncated with the total stated. A tool that floods the context window pushes the user's own question out of it |
+| Prompt injection reaches a dangerous tool | [quant-mcp threat model](https://github.com/GeneralTradingSarl/quant-mcp/blob/main/docs/SECURITY.md) | There is no dangerous tool: no writes, no network, no child processes. Cheaper than making a model immune to persuasion |
 
 ---
 
