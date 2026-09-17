@@ -147,6 +147,26 @@ one a thing that breaks in production long before it breaks in a demo:
 
 ---
 
+## Shipped for clients
+
+The repositories above show how I build. This is what has reached production, with numbers a
+reviewer can re-count and, where the product is public, a link that opens.
+
+| What | State | The part that was hard |
+|---|---|---|
+| [**Praxis Academy**](https://praxisacademy.xyz), a white-label trading academy | Live, paywall taking real payments | 184 written lessons, 72 narrated cinematic stages, 17 playable exercise types, bilingual throughout, and a mobile money paywall running in production |
+| [**Aptus**](https://aptus-tableau.vercel.app), a blackboard an AI reads | Live | The mentor never sees a photograph. It reads the board's structured state, every fraction, exponent and solid edge, and answers in brass in the margin. Exact 3D solids by convex hull, with net unfolding |
+| [**Solivo**](https://solivo-ebon.vercel.app), peer-to-peer lending | Live | Simulation through underwriting, e-signature, fee settlement and payout, with a full back-office. Supporting documents live in the database, because a file written next to the app does not survive a disposable host |
+| **Mercatis**, a B2B marketplace from China to West Africa | Private repository, 841 automated checks | One product page carrying two competing offers, a single delivery run when two carts share a courier, escrow, lifetime affiliate tracking, and 817 hardcoded French strings brought down to zero |
+| **paiements-bj**, three mobile money payment APIs | Private, sandbox proven end to end | MTN over REST/OAuth2, Moov over SOAP, Celtiis through the QoSIC gateway, in a module with no runtime dependencies. 251 tests, emulators that reproduce the operators' failures rather than only their happy path, and 24 documented gotchas, seven of which appear in no official documentation |
+| **Real-time coordination platform** with contradiction detection | Delivered, in client testing | FastAPI, Postgres with pgvector, Redis, WebSocket. The arbiter stopped inventing conflicts once each decision carried the event it belongs to, not only the subject it is about: a reconnaissance date and an execution date had been two competing answers to one question |
+| **Deriv options bot**, Telegram-driven | Delivered | The recovery ladder is sized from the payout the broker quotes on the contract about to be bought, not from an assumed 100%. Measured on a demo account: 15 recovery ladders closed, each at exactly +0.82, and a session won on a 36% win rate |
+
+Clients under a confidentiality agreement are described without being named, with no
+screenshot and no link.
+
+---
+
 ## What I work on
 
 <table>
