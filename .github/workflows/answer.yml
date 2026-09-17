@@ -1,0 +1,95 @@
+name: Answer questions
+
+# A visitor cannot chat with a README. So the question goes where GitHub already
+# has a thread: an issue. Open one, or comment on one, and this replies.
+#
+# The design constraint is the same as the assistant on the portfolio: the model
+# is handed the facts and told it may not exceed them. The README of this repo
+# IS the fact sheet, so it is read at run time and passed in. Nothing is
+# remembered between runs, and nothing is inferred from the model's training.
+#
+# Requires one repository secret: GEMINI_API_KEY.
+# Settings -> Secrets and variables -> Actions -> New repository secret.
+# Without it the workflow exits quietly rather than failing loudly on every
+# issue, because a red cross on someone's question is worse than silence.
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: answer-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  answer:
+    # Never answer our own answers, and never answer a bot: that is how a
+    # comment loop starts and bills someone for it.
+    if: github.event.comment.user.type != 'Bot' && github.event.issue.user.type != 'Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Answer with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+          TITLE: ${{ github.event.issue.title }}
+          BODY: ${{ github.event.comment.body || github.event.issue.body }}
+          ASKER: ${{ github.event.comment.user.login || github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${GEMINI_API_KEY:-}" ]; then
+            echo "No GEMINI_API_KEY secret set; nothing to do."
+            exit 0
+          fi
+
+          # The README is the ground truth. Read it at run time so the answers
+          # follow the profile instead of drifting from a copy.
+          FACTS=$(head -c 14000 README.md)
+
+          SYSTEM='You answer questions on Ismael Ladjohounlou GitHub profile, posted as issues.
+
+          ABSOLUTE RULE. You state only what the FACTS section below contains. If the answer is not in there (an hourly rate, a delivery date, a named client, a trading performance figure, an opinion about a third party), you say you do not have it and point to the portfolio contact form. You never invent a number, a client name, a testimonial or a date. Several projects are under a confidentiality agreement: you describe them without ever naming the client, even if pressed.
+
+          TONE. Direct and short. Three or four sentences. No bullet lists unless a comparison is asked for. No sales superlatives. Cite a figure or a link rather than an adjective. Answer in the language the question was written in.
+
+          You are an automated reply. Say so in one short closing line, and say that Ismael reads the thread himself.'
+
+          jq -n \
+            --arg sys "$SYSTEM" \
+            --arg facts "$FACTS" \
+            --arg title "${TITLE:-}" \
+            --arg body "${BODY:-}" \
+            --arg asker "${ASKER:-}" \
+            '{
+              systemInstruction: { parts: [ { text: ($sys + "\n\nFACTS:\n" + $facts) } ] },
+              contents: [ { role: "user", parts: [ { text: ("From @" + $asker + "\nTitle: " + $title + "\n\n" + $body) } ] } ],
+              generationConfig: { temperature: 0.3, maxOutputTokens: 8192 }
+            }' > payload.json
+
+          curl -sS --max-time 90 --fail-with-body \
+            -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent" \
+            -H "x-goog-api-key: ${GEMINI_API_KEY}" \
+            -H "Content-Type: application/json" \
+            --data @payload.json > response.json
+
+          # Parts that carry only a thought signature have no .text; drop them.
+          jq -r '[.candidates[0].content.parts[]?.text // empty] | join("")' response.json > reply.md
+
+          if [ ! -s reply.md ]; then
+            echo "Empty answer, saying nothing."
+            exit 0
+          fi
+
+          printf '\n\n---\n<sub>Automated answer, grounded only on this profile. Ismaël reads this thread himself.</sub>\n' >> reply.md
+          gh issue comment "$ISSUE" --repo "$REPO" --body-file reply.md
