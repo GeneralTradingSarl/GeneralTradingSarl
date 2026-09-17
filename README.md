@@ -24,6 +24,24 @@ money.
 
 ---
 
+## Ask me anything, literally
+
+Two ways to get an answer without waiting for me to wake up:
+
+[![Ask on GitHub](https://img.shields.io/badge/Ask%20here-open%20an%20issue-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GeneralTradingSarl/GeneralTradingSarl/issues/new?title=Question&body=Ask%20anything%20about%20the%20work%20listed%20on%20this%20profile.)
+[![Ask on the site](https://img.shields.io/badge/Or%20on%20the%20site-live%20assistant-D4AF37?style=for-the-badge&logo=vercel&logoColor=white)](https://ismael-portfolio-liard.vercel.app/en)
+
+Open an issue and an assistant answers in the thread, in your language. It is
+handed this README as its only source of facts and is not allowed past it: ask
+for an hourly rate, a named client or a trading performance figure and it will
+tell you it does not have that rather than produce one. Clients under a
+confidentiality agreement stay unnamed. I read every thread myself.
+
+The same assistant sits on the portfolio, where it also knows the private
+client work, the figures behind each build and the starting prices.
+
+---
+
 ## Flagship work
 
 Five systems built end to end, each readable in full. The test counts are what the suites
@@ -206,24 +224,6 @@ volatility modelling, backtesting with honest execution assumptions, risk manage
 </td>
 </tr>
 </table>
-
-## Ask me anything, literally
-
-Two ways to get an answer without waiting for me to wake up:
-
-[![Ask on GitHub](https://img.shields.io/badge/Ask%20here-open%20an%20issue-24292F?style=for-the-badge&logo=github&logoColor=white)](https://github.com/GeneralTradingSarl/GeneralTradingSarl/issues/new?title=Question&body=Ask%20anything%20about%20the%20work%20listed%20on%20this%20profile.)
-[![Ask on the site](https://img.shields.io/badge/Or%20on%20the%20site-live%20assistant-D4AF37?style=for-the-badge&logo=vercel&logoColor=white)](https://ismael-portfolio-liard.vercel.app/en)
-
-Open an issue and an assistant answers in the thread, in your language. It is
-handed this README as its only source of facts and is not allowed past it: ask
-for an hourly rate, a named client or a trading performance figure and it will
-tell you it does not have that rather than produce one. Clients under a
-confidentiality agreement stay unnamed. I read every thread myself.
-
-The same assistant sits on the portfolio, where it also knows the private
-client work, the figures behind each build and the starting prices.
-
----
 
 ## Stack
 
