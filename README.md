@@ -243,6 +243,12 @@ A 126 page handbook on designing, securing and auditing a Stripe integration tha
 
 `Stripe` `PCI DSS 4.0.1` `SCA and 3D Secure` `webhooks` `idempotency` `disputes` `Connect`
 
+### [Le Fil d'Exécution](https://github.com/GeneralTradingSarl/le-fil-d-execution)
+
+A second handbook, 104 pages, in French: designing, operating and governing automated workflows with n8n, from a laptop prototype to a system you can invoice a client for. Twenty-three chapters and six case studies. An English edition is in preparation.
+
+`n8n` `idempotence` `queue mode` `observability` `agents` `governance`
+
 ## Other repositories
 
 | Repository | What it is |
