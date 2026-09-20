@@ -235,6 +235,14 @@ volatility modelling, backtesting with honest execution assumptions, risk manage
 
 </div>
 
+## Writing
+
+### [The Money Path](https://github.com/GeneralTradingSarl/the-money-path)
+
+A 126 page handbook on designing, securing and auditing a Stripe integration that deserves to run in production. 18 chapters, a reference implementation in TypeScript and PostgreSQL, and a 72 point grid for reviewing an integration you did not write. Free PDF.
+
+`Stripe` `PCI DSS 4.0.1` `SCA and 3D Secure` `webhooks` `idempotency` `disputes` `Connect`
+
 ## Other repositories
 
 | Repository | What it is |
